@@ -1,4 +1,17 @@
 {% extends "forms/base.html" %}
 {% block content %}
-    <h1>Home page</h1>
+    <table>
+      <tr>
+        <th>Person</th>
+        <th>Sex</th>
+        <th>Age</th>
+      </tr>
+        {% for person in people %}
+      <tr>
+        <td>{{ person.id }}</td>
+        <td>{{ person.sex }}</td>
+        <td>{{ person.age }}</td>
+      </tr>
+        {% endfor %}
+    </table>
 {% endblock content %}
