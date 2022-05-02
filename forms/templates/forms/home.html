@@ -1,17 +1,23 @@
 {% extends "forms/base.html" %}
 {% block content %}
-    <table>
-      <tr>
-        <th>Person</th>
-        <th>Sex</th>
-        <th>Age</th>
-      </tr>
-        {% for person in people %}
-      <tr>
-        <td>{{ person.id }}</td>
-        <td>{{ person.sex }}</td>
-        <td>{{ person.age }}</td>
-      </tr>
-        {% endfor %}
-    </table>
+  <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Sex</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for person in people %}
+          <tr>
+            <th scope="row"> {{ person.id }} </th>
+            <td>{{ person.sex }}</td>
+            <td>{{ person.age }}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+  </div>
 {% endblock content %}
