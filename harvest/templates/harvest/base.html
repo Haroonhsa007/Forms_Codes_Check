@@ -24,13 +24,15 @@
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
+              <!-- Navbar Left Side -->
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'harvest-add_person' %}">Add Person</a>
-              <a class="nav-item nav-link" href="{% url 'harvest-about' %}">About</a>
+                <a class="nav-item nav-link" href="{% url 'harvest-people' %}">List People</a>
+                <a class="nav-item nav-link" href="{% url 'harvest-add_person' %}">Add Person</a>
             </div>
             <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-item nav-link" href="{% url 'harvest-about' %}">About</a>
+                <a class="nav-item nav-link" href="#">Login</a>
             </div>
           </div>
         </div>
