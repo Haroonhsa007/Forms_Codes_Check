@@ -1,8 +1,0 @@
-{% extends "harvest/base.html" %}
-{% block content %}
-    {% if searched %}
-        {% for person in people %}
-            You searched for {{ person }}
-        {% endfor %}
-    {% endif %}
-{% endblock content %}

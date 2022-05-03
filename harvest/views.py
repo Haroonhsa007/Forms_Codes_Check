@@ -49,12 +49,10 @@ def search_people(request):
     if request.method == 'POST':
         searched = request.POST.get('searched')
         people = Person.objects.filter(id__contains=searched)
-        context = {'searched': searched,
-                    'people': people}
+        context = {'people': people}
         if searched == '':
             messages.warning(request, 'Empty search')
-        else:
-            return render(request, 'harvest/search_people.html', context)
     else:
         context = {}
-    return render(request, 'harvest/search_people.html', context)
+
+    return render(request, 'harvest/people.html', context)
