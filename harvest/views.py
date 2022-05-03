@@ -36,3 +36,14 @@ def add_person(request):
 def edit_person(request, person_id):
     context = {'person': Person.objects.get(pk=person_id)}
     return render(request, 'harvest/edit_person.html', context)
+
+
+def search_people(request):
+    if request.method == 'POST':
+        searched = request.POST.get('searched')
+        people = Person.objects.filter(id__contains=searched)
+        context = {'searched': searched,
+                   'people': people}
+    else:
+        context = {}
+    return render(request, 'harvest/search_people.html', context)

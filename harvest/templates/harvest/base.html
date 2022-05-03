@@ -31,6 +31,10 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav ms-auto">
+                <form class="d-flex" method="POST" action="{% url 'harvest-search_people' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                </form>
                 <a class="nav-item nav-link" href="{% url 'harvest-about' %}">About</a>
                 <a class="nav-item nav-link" href="#">Login</a>
             </div>
