@@ -17,6 +17,6 @@ class PersonForm(ModelForm):
 
         widgets = {
             'id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ID'}),
-            'sex': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Sex'}),
+            'sex': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Sex'}),
             'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Age'}),
         }
