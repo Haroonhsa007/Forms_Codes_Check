@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .models import Person
 from .forms import PersonForm
@@ -34,7 +34,13 @@ def add_person(request):
 
 
 def edit_person(request, person_id):
-    context = {'person': Person.objects.get(pk=person_id)}
+    person = Person.objects.get(pk=person_id)
+    form = PersonForm(request.POST or None, instance=person)
+    if form.is_valid():
+        form.save()
+        return redirect('harvest-people')
+    context = {'person': person,
+               'form': form}
     return render(request, 'harvest/edit_person.html', context)
 
 

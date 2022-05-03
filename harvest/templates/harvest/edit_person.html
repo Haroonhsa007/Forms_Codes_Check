@@ -1,5 +1,10 @@
 {% extends "harvest/base.html" %}
 {% block content %}
     <h1>Edit person</h1>
-    {{ person }}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        <input type="submit" value="Edit" class="btn btn-secondary">
+    </form>
 {% endblock content %}
