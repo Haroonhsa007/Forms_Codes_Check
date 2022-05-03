@@ -5,11 +5,11 @@ class Person(models.Model):
 
     id = models.CharField(max_length=100, primary_key=True)
 
-    men = 'M'
-    women = 'W'
+    man = 'M'
+    woman = 'W'
     sex_choices = [
-        (men, 'Men'),
-        (women, 'Women'),
+        (man, 'Man'),
+        (woman, 'Woman'),
     ]
     sex = models.CharField(
         max_length=2,
