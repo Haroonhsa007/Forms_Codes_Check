@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Person
 from .forms import PersonForm
 
@@ -49,7 +50,11 @@ def search_people(request):
         searched = request.POST.get('searched')
         people = Person.objects.filter(id__contains=searched)
         context = {'searched': searched,
-                   'people': people}
+                    'people': people}
+        if searched == '':
+            messages.warning(request, 'Empty search')
+        else:
+            return render(request, 'harvest/search_people.html', context)
     else:
         context = {}
     return render(request, 'harvest/search_people.html', context)
