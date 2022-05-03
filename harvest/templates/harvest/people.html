@@ -1,23 +1,23 @@
 {% extends "harvest/base.html" %}
 {% block content %}
   <div class="table-responsive">
-      <table class="table table-hover table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Sex</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for person in people %}
-          <tr>
-            <th scope="row"><a href="{% url 'harvest-edit_person' person.id %}">{{ person.id }}</a></th>
-            <td>{{ person.sex }}</td>
-            <td>{{ person.age }}</td>
-          </tr>
-            {% endfor %}
-        </tbody>
-      </table>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sex</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for person in people %}
+        <tr>
+          <th scope="row"><a href="{% url 'harvest-edit_person' person.id %}">{{ person.id }}</a></th>
+          <td>{{ person.sex }}</td>
+          <td>{{ person.age }}</td>
+        </tr>
+          {% endfor %}
+      </tbody>
+    </table>
   </div>
 {% endblock content %}
