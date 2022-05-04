@@ -1,5 +1,6 @@
+import csv
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Person
@@ -57,3 +58,18 @@ def search_people(request):
         context = {}
 
     return render(request, 'harvest/people.html', context)
+
+
+@login_required
+def people_csv(request):
+    people = Person.objects.all()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=people.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['ID', 'Sex', 'Age'])
+    for person in people:
+        writer.writerow([person.id, person.sex, person.age])
+
+    return response
