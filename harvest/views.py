@@ -9,10 +9,6 @@ def home(request):
     return render(request, 'harvest/home.html')
 
 
-def about(request):
-    return render(request, 'harvest/about.html')
-
-
 def people(request):
     context = {'people': Person.objects.all()}
     return render(request, 'harvest/people.html', context)
