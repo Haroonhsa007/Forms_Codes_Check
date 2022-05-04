@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Person
 from .forms import PersonForm
 
@@ -9,11 +10,13 @@ def home(request):
     return render(request, 'harvest/home.html')
 
 
+@login_required
 def people(request):
     context = {'people': Person.objects.all()}
     return render(request, 'harvest/people.html', context)
 
 
+@login_required
 def add_person(request):
     submitted = False
     if request.method == "POST":
@@ -30,6 +33,7 @@ def add_person(request):
     return render(request, 'harvest/add_person.html', context)
 
 
+@login_required
 def edit_person(request, person_id):
     person = Person.objects.get(pk=person_id)
     form = PersonForm(request.POST or None, instance=person)
@@ -41,6 +45,7 @@ def edit_person(request, person_id):
     return render(request, 'harvest/edit_person.html', context)
 
 
+@login_required
 def search_people(request):
     if request.method == 'POST':
         searched = request.POST.get('searched')

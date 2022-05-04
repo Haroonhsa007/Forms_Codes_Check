@@ -19,23 +19,20 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'harvest-home' %}">MedHarvest</a>
+          <a class="navbar-brand mr-5" href="{% url 'harvest-home' %}">MedHarvest</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
-              <!-- Navbar Left Side -->
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'harvest-people' %}">List People</a>
-                <a class="nav-item nav-link" href="{% url 'harvest-add_person' %}">Add Person</a>
-            </div>
             <!-- Navbar Right Side -->
-            <div class="navbar-nav ms-auto">
-                <form class="d-flex" method="POST" action="{% url 'harvest-search_people' %}">
-                    {% csrf_token %}
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-                </form>
+            <div class="navbar-nav ms-auto px-5">
                 {% if user.is_authenticated %}
+                    <a class="nav-item nav-link mr-auto me-auto" href="{% url 'harvest-people' %}">List People</a>
+                    <a class="nav-item nav-link mr-auto me-auto" href="{% url 'harvest-add_person' %}">Add Person</a>
+                    <form class="d-flex" method="POST" action="{% url 'harvest-search_people' %}">
+                        {% csrf_token %}
+                        <input class="form-control mr-auto me-auto" type="search" placeholder="Search person ID" aria-label="Search" name="searched">
+                    </form>
                     <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                 {% else %}
                     <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
